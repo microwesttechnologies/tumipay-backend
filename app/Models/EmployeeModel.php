@@ -19,7 +19,8 @@ class EmployeeModel extends Model
         'id_area',
         'id_category',
         'id_company',
-        'satisfaction_level'
+        'satisfaction_level',
+        'favorite'
     ];
 
     public function area()
