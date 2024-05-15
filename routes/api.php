@@ -1,22 +1,36 @@
 <?php
 
-use App\Http\Controllers\CoordinatesController;
-use App\Http\Controllers\DataPrimaryController;
-use App\Http\Controllers\MainDataController;
-use App\Http\Controllers\MetaDataController;
-use App\Http\Controllers\WindController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AreaController;
 
-Route::get('/metadata',                         [MetaDataController         ::class, 'getAllMetadata']);
-Route::get('/metadata/{id}',                    [MetaDataController         ::class, 'getMetadataById']);
-Route::get('/maindata',                         [MainDataController         ::class, 'getAllMaindata']);
-Route::get('/maindata/{id}',                    [MainDataController         ::class, 'getMainDataById']);
-Route::get('/wind',                             [WindController             ::class, 'getAllWind']);
-Route::get('/wind/{id}',                        [WindController             ::class, 'getWindById']);
-Route::get('/coordinates',                      [CoordinatesController      ::class, 'getAllCoordinates']);
-Route::get('/coordinates/{id}',                 [CoordinatesController      ::class, 'getCoordinateById']);
-Route::get('/dataprimary',                      [DataPrimaryController      ::class, 'getAllDataPrimary']);
-Route::get('/dataprimary/{id}',                 [DataPrimaryController      ::class, 'getDataPrimaryById']);
-Route::get('/dataprimarybydate/{dateSending}',  [DataPrimaryController      ::class, 'getDataPrimaryByDate']);
+Route::get('/employees', [EmployeeController::class, 'index']);
+Route::post('/employees', [EmployeeController::class, 'store']);
+Route::get('/employees/{id}', [EmployeeController::class, 'show']);
+Route::put('/employees/{id}', [EmployeeController::class, 'update']);
+Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']);
+
+Route::get('/companies', [CompanyController::class, 'index']);
+Route::post('/companies', [CompanyController::class, 'store']);
+Route::get('/companies/{id}', [CompanyController::class, 'show']);
+Route::put('/companies/{id}', [CompanyController::class, 'update']);
+Route::delete('/companies/{id}', [CompanyController::class, 'destroy']);
+
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::post('/categories', [CategoryController::class, 'store']);
+Route::get('/categories/{id}', [CategoryController::class, 'show']);
+Route::put('/categories/{id}', [CategoryController::class, 'update']);
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
+
+Route::get('/areas', [AreaController::class, 'index']);
+Route::post('/areas', [AreaController::class, 'store']);
+Route::get('/areas/{id}', [AreaController::class, 'show']);
+Route::put('/areas/{id}', [AreaController::class, 'update']);
+Route::delete('/areas/{id}', [AreaController::class, 'destroy']);
+
+
+
 
 
 
