@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $employees = EmployeeModel::select('employee.full_name', 'employee.hire_date', 'employee.email', 'company.name_company', 'area.name_area', 'category.name_category')
+        $employees = EmployeeModel::select('employee.id_employee', 'employee.full_name', 'employee.hire_date', 'employee.email', 'company.name_company', 'area.name_area', 'category.name_category', 'employee.satisfaction_level')
             ->join('company', 'employee.id_company', '=', 'company.id_company')
             ->join('area', 'employee.id_area', '=', 'area.id_area')
             ->join('category', 'employee.id_category', '=', 'category.id_category')
@@ -23,12 +23,18 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $employee = EmployeeModel::create($request->all());
-        return response()->json($employee, 201);
+        $employeeId = $employee->id_employee;
+
+        return response()->json($employeeId, 201);
     }
+
+
+
+
 
     public function show($id)
     {
-        $employee = EmployeeModel::select('employee.id_employee', 'employee.full_name', 'employee.hire_date', 'employee.email', 'company.name_company', 'area.name_area', 'category.name_category')
+        $employee = EmployeeModel::select('employee.id_employee', 'employee.full_name', 'employee.hire_date', 'employee.email', 'company.name_company', 'area.name_area', 'category.name_category', 'employee.satisfaction_level')
             ->join('company', 'employee.id_company', '=', 'company.id_company')
             ->join('area', 'employee.id_area', '=', 'area.id_area')
             ->join('category', 'employee.id_category', '=', 'category.id_category')
